@@ -1,0 +1,29 @@
+<h2>List of Customers</h2>
+<div class="contaimer">
+   <table class="table table-bordered table-striped">
+     <thead>
+          <tr class="table-dark">
+              <th *ngFor="let column of columns">
+                 {{column}}
+              </th>
+          </tr>
+     </thead>
+     <tbody>
+        <tr *ngFor="let customer of customers$|async">
+            <td *ngFor="let column of columns">
+               {{customer[column]}}
+            </td>
+            <td>
+              <button class="btn btn-warning"
+                (click)="navigateToEdit(customer.CustomerRecordId)"
+              >Edit</button>
+            </td>
+            <td>
+              <button class="btn btn-danger"
+                (click)="deleteRecord(customer.CustomerRecordId)"
+              >Delete</button>
+            </td>
+        </tr>
+     </tbody>
+   </table>
+</div>
